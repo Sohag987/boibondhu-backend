@@ -2,5 +2,7 @@ from rest_framework.pagination import PageNumberPagination
 
 class BookForLendPagination(PageNumberPagination):
     page_size = 9 
-    page_query_param = 'size'
+    page_query_param = 'page'
     max_page_size = 50 
+
+    
