@@ -78,13 +78,13 @@ class LoginView(APIView):
         except MyCustomUser.DoesNotExist:
             return Response(
                 {'error': 'Invalid credentials'},
-                status=status.HTTP_401_UNAUTHORIZED
+                status=status.HTTP_400_BAD_REQUEST
             )
 
         if not check_password(password, user.password):
             return Response(
                 {'error': 'Invalid credentials'},
-                status=status.HTTP_401_UNAUTHORIZED
+                status=status.HTTP_400_BAD_REQUEST
             )
 
         return Response({**get_tokens_for_user(user),'username':user.first_name}, status=status.HTTP_200_OK)

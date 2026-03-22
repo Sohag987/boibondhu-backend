@@ -1,3 +1,42 @@
 from django.test import TestCase
+from rest_framework.test import APIClient
+from rest_framework import status
+from user.models import MyCustomUser
+from .models import BookForSell
 
-# Create your tests here.
+class BookForSellTests(TestCase):
+
+    def setUp(self):  
+        self.client = APIClient()
+        self.user = MyCustomUser.objects.create_user(
+            first_name = 'goru',
+            last_name  = 'dalal',
+            email      = 'gorudalal@gmail.com',
+            password   = 'password123',
+            phone      = '01712345678',
+        )
+
+    def test_get_all_books(self):  
+        res = self.client.get('/book-for-sell/')
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
+
+    def test_create_book(self):  
+        self.client.force_authenticate(user=self.user)
+        res = self.client.post('/book-for-sell/', {
+            'book_name'  : 'The Great Gatsby',
+            'author_name': 'F. Scott Fitzgerald',
+            'description': 'A novel set in the Roaring Twenties.',
+            'price'      : 10.99,
+        })
+        self.assertEqual(res.status_code, status.HTTP_201_CREATED)
+
+    def test_get_single_book(self):
+        book = BookForSell.objects.create(
+            seller      = self.user,
+            book_name   = 'Test Book',
+            author_name = 'Test Author',
+            price       = 100,
+            description = 'Test',
+        )
+        res = self.client.get(f'/book-for-sell/{book.slug}/')
+        self.assertEqual(res.status_code, status.HTTP_200_OK)
