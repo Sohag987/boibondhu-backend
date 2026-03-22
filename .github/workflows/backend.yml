@@ -47,8 +47,8 @@ jobs:
           TESTING: 'True'
           ALLOWED_HOSTS: 'localhost,127.0.0.1'
           DB_NAME: test_db
-          DB_USER: test_user
-          DB_PASSWORD: test_password
+          DB_USER: root
+          DB_PASSWORD: rootpassword
           DB_HOST: 127.0.0.1
           DB_PORT: '3306'
         run: |
