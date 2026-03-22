@@ -31,5 +31,5 @@ jobs:
           TESTING: 'True'
           ALLOWED_HOSTS: 'localhost,127.0.0.1'
         run: |
-          cd boibondhu
+          
           python manage.py test --verbosity=2
