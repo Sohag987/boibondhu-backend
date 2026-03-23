@@ -193,7 +193,7 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ['https://boibondhu-backend.onrender.com/']
+CORS_ALLOWED_ORIGINS = ['https://boibondhu-forntend.vercel.app']
 
 AUTH_USER_MODEL = 'user.MyCustomUser'
 
