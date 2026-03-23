@@ -10,14 +10,10 @@ from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 from django.urls import path
 from user.views import RegisterView, LoginView, ProfileView, TokenRefreshView ,DashboardView
 from contact.views import ContactView
-urlpatterns = [
-    path('register/',      RegisterView.as_view()),
-    path('login/',         LoginView.as_view()),
-    path('profile/',       ProfileView.as_view()),
-    path('token/refresh/', TokenRefreshView.as_view()),
-]
+from boibondhu.views import home 
 
 urlpatterns = [
+    path('',home,name='home'),
     # for funding books 
     path('book-for-fund/',BookForFundListView.as_view()),
     path('book-for-fund/<slug:slug>/',SingleBookForFund.as_view()),
