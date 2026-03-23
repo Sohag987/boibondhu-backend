@@ -192,7 +192,8 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES':("Bearer",)
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOWED_ORIGINS = ['https://boibondhu-backend.onrender.com/']
 
 AUTH_USER_MODEL = 'user.MyCustomUser'
 
