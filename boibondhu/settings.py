@@ -145,7 +145,7 @@ if not DEBUG:
    INSTALLED_APPS+= ['cloudinary_storage','cloudinary']
 
    CLOUDINARY_STORAGE = {
-    'CLOUDINARY_URL': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'CLOUDINARY_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
     'CLOUDINARY_KEY': os.getenv('CLOUDINARY_API_KEY'),
     'CLOUDINARY_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 
