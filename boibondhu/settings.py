@@ -141,6 +141,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL  = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+if not DEBUG:
+   INSTALLED_APPS+= ['cloudinary_storage','cloudinary']
+
+   CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'CLOUDINARY_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'CLOUDINARY_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+
+                        }
+   DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 REDIS_URL = os.getenv('REDIS_URL')
 
 if REDIS_URL:
