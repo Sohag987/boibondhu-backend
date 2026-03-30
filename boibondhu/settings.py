@@ -77,8 +77,8 @@ WSGI_APPLICATION = 'boibondhu.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-if DEBUG:
-    DATABASES = {
+
+DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('DB_NAME'),
@@ -88,13 +88,10 @@ if DEBUG:
         'PORT': os.getenv('DB_PORT'),
     }
 }
-else:
-    DATABASES = {
-     'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
-        
+
         
     
-}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -141,32 +138,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL  = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-if not DEBUG:
-   INSTALLED_APPS+= ['cloudinary_storage','cloudinary']
 
-   CLOUDINARY_STORAGE = {
-    'CLOUDINARY_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
-    'CLOUDINARY_KEY': os.getenv('CLOUDINARY_API_KEY'),
-    'CLOUDINARY_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 
-                        }
-   DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-REDIS_URL = os.getenv('REDIS_URL')
 
-if REDIS_URL:
-  CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": REDIS_URL,
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
 
-else:
-  CACHES = {
+CACHES = {
          "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://localhost:6379/1",
@@ -174,8 +151,9 @@ else:
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     }
+}
        
-    }
+
     
 
 
