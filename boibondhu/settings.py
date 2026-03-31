@@ -142,7 +142,7 @@ if DEBUG:
 
 else:
    MEDIA_URL = '/media/'
-   MEDIA_ROOT = '/root/boibondu_backend/media/'
+   MEDIA_ROOT = BASE_DIR / 'media'
 
 
 
@@ -187,8 +187,8 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES':("Bearer",)
 }
 
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = ['https://boibondhu-forntend.vercel.app']
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = ['https://boibondhu-forntend.vercel.app']
 
 AUTH_USER_MODEL = 'user.MyCustomUser'
 
